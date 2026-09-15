@@ -1,0 +1,13 @@
+{
+  "rate_control": "CBR",
+  "bitrate": 18000,
+  "preset2": "p6",
+  "tuning": "lowlatency",
+  "multipass": "fullres",
+  "profile": "main",
+  "lookahead": false,
+  "psycho_aq": true,
+  "bf": 2,
+  "keyint_sec": 2,
+  "gpu": 0
+}

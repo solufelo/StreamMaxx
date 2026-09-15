@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrodCatsSuite0 // Optimaxx Multi-Stream Control Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- TOP STATUS BAR -->
+    <header class="header">
+      <div class="logo-group">
+        <div class="glow-indicator" id="masterStatusDot"></div>
+        <div>
+          <h1 class="title">BRODCATS SUITE<span class="sub-zero">0</span></h1>
+          <p class="subtitle">MULTI-PLATFORM BROADCAST ENGINE // HARDWARE OPTIMAXX</p>
+        </div>
+      </div>
+
+      <div class="rig-info">
+        <span class="chip chip-cpu">RYZEN 5800X [CORES 6-7 / 0xF000]</span>
+        <span class="chip chip-gpu">RTX 4060 Ti [ADA NVENC]</span>
+        <span class="chip chip-qos">DSCP 46 [EF QOS]</span>
+      </div>
+    </header>
+
+    <!-- TELEMETRY HUD -->
+    <section class="telemetry-bar">
+      <div class="metric-card">
+        <span class="metric-label">RELAY STATUS</span>
+        <span class="metric-val" id="relayStatusText">CHECKING...</span>
+        <span class="metric-sub" id="relaySubText">rtmp://127.0.0.1:1935/live/master</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-label">NVENC ENCODER LOAD</span>
+        <div class="bar-wrapper">
+          <div class="bar-fill" id="nvencBar" style="width: 0%"></div>
+        </div>
+        <span class="metric-val" id="nvencVal">0%</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-label">GPU TEMP / VRAM</span>
+        <span class="metric-val" id="gpuTemp">-- ?C</span>
+        <span class="metric-sub" id="gpuVram">-- / -- MB</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-label">OBS PROCESS</span>
+        <span class="metric-val" id="obsStatus">CHECKING...</span>
+        <span class="metric-sub" id="obsSub">AboveNormal Priority</span>
+      </div>
+    </section>
+
+    <!-- ACTION STRIP -->
+    <section class="action-strip">
+      <button class="btn btn-primary" id="btnLaunchObs">
+        <span class="btn-icon">??</span> LAUNCH OPTIMAXX OBS
+      </button>
+      <button class="btn btn-secondary" id="btnRestartRelay">
+        <span class="btn-icon">?</span> SYNC & START RELAY
+      </button>
+      <button class="btn btn-accent" id="btnApplyQos">
+        <span class="btn-icon">???</span> RE-APPLY HARDWARE QOS
+      </button>
+      <button class="btn btn-dark" id="btnCopyIngest">
+        <span class="btn-icon">??</span> COPY INGEST URL
+      </button>
+    </section>
+
+    <!-- NOTIFICATION BANNER -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- MAIN PLATFORM SWITCHBOARD -->
+    <section class="platform-section">
+      <div class="section-title-bar">
+        <h2>BROADCAST DESTINATIONS</h2>
+        <span class="badge" id="activeDestCount">0 ACTIVE</span>
+      </div>
+
+      <div class="platform-grid" id="platformGrid">
+        <!-- Platform cards rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- OBS DOCK HELPER & CHAT AGGREGATOR -->
+    <section class="dock-helper">
+      <div class="helper-box">
+        <h3>?? OBS STUDIO NATIVE DOCK INTEGRATION</h3>
+        <p>You can embed this entire control switchboard directly inside OBS Studio!</p>
+        <ol>
+          <li>In OBS Studio, click <strong>Docks</strong> &gt; <strong>Custom Browser Docks...</strong></li>
+          <li>Set Dock Name to <code>BrodCats Control</code> and URL to <code>http://localhost:8999</code></li>
+          <li>Click <strong>Apply</strong> and drag the dock next to your OBS Audio Mixer or Stream controls!</li>
+        </ol>
+      </div>
+
+      <div class="helper-box">
+        <h3>?? MULTI-CHAT AGGREGATOR QUICK-LINKS</h3>
+        <p>Combine Twitch, YouTube, and Kick chats into a single floating overlay with zero lag:</p>
+        <div class="chat-links">
+          <a href="https://chat.restream.io" target="_blank" class="chat-link">Restream Multi-Chat ?</a>
+          <a href="https://botrix.live" target="_blank" class="chat-link">Botrix Live Chat ?</a>
+          <a href="https://socialstream.ninja" target="_blank" class="chat-link">Social Stream Ninja ?</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>BRODCATSSUITE0 // OPTIMAXXED FOR LOWEST LATENCY & ZERO FRAME DROPS</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

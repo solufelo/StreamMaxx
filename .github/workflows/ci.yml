@@ -1,0 +1,68 @@
+name: StreamMaxx CI & Build Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-verify:
+    name: Build Native Executable & Security Audit
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET Framework / MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Security Audit - Verify No Leaked Secrets
+        shell: pwsh
+        run: |
+          Write-Host 'Running credential scan...' -ForegroundColor Cyan
+          $leaks = Get-ChildItem -Recurse -File -Exclude '*.md', '*.ico', '*.png', '*.exe' | Select-String -Pattern 'live_[0-9]+_[A-Za-z0-9]+', 'sk_us-[a-z0-9-_]+'
+          if ($leaks) {
+            Write-Error 'SECURITY ALERT: Unmasked stream keys detected in committed files!'
+            $leaks | ForEach-Object { Write-Host $_.Path }
+            exit 1
+          } else {
+            Write-Host 'PASS: Zero credentials detected in repository tree.' -ForegroundColor Green
+          }
+
+      - name: Compile StreamMaxx.exe via CSC
+        shell: cmd
+        run: |
+          echo Building StreamMaxx Native Binary...
+          C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /nologo /target:winexe /optimize+ /win32manifest:src\app.manifest /win32icon:src\app.ico /reference:System.dll,System.Windows.Forms.dll,System.Drawing.dll /out:StreamMaxx.exe src\StreamMaxxApp.cs
+
+      - name: Verify Binary Output
+        shell: pwsh
+        run: |
+          if (Test-Path 'StreamMaxx.exe') {
+            $item = Get-Item 'StreamMaxx.exe'
+            Write-Host "Binary created successfully: $($item.Length) bytes" -ForegroundColor Green
+          } else {
+            Write-Error 'StreamMaxx.exe was not produced by compiler.'
+            exit 1
+          }
+
+      - name: Validate JSON Configurations
+        shell: pwsh
+        run: |
+          Get-ChildItem -Path 'config' -Recurse -Filter '*.json' | ForEach-Object {
+            try {
+              $null = Get-Content $_.FullName -Raw | ConvertFrom-Json
+              Write-Host "Valid JSON: $($_.Name)" -ForegroundColor Green
+            } catch {
+              Write-Error "Invalid JSON in $($_.FullName): $_"
+              exit 1
+            }
+          }
+
+      - name: Upload Binary Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: StreamMaxx-Windows-x64
+          path: StreamMaxx.exe

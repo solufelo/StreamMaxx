@@ -1,0 +1,195 @@
+{
+  "current_scene": "GAMEPLAY ULTRA (Active)",
+  "current_program_scene": "GAMEPLAY ULTRA (Active)",
+  "name": "Optimaxx_Master_Gaming",
+  "modules": {
+    "scripts-tool": []
+  },
+  "groups": [],
+  "sources": [
+    {
+      "name": "DirectX / Vulkan Game Capture",
+      "id": "game_capture",
+      "settings": {
+        "capture_mode": "any_fullscreen",
+        "capture_cursor": true,
+        "hook_rate": 2,
+        "anti_cheat_hook": true,
+        "limit_framerate": true,
+        "allow_transparency": false,
+        "compatibility": false
+      },
+      "mixers": 0,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false,
+      "push-to-mute": false,
+      "push-to-talk": false
+    },
+    {
+      "name": "Desktop Audio (WASAPI)",
+      "id": "wasapi_output_capture",
+      "settings": {
+        "device_id": "default"
+      },
+      "mixers": 255,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false,
+      "push-to-mute": false,
+      "push-to-talk": false
+    },
+    {
+      "name": "Broadcast Mic (Optimaxx Low-Latency)",
+      "id": "wasapi_input_capture",
+      "settings": {
+        "device_id": "default"
+      },
+      "mixers": 255,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false,
+      "push-to-mute": false,
+      "push-to-talk": false,
+      "filters": [
+        {
+          "name": "Noise Suppression (RNNoise Low-Latency)",
+          "id": "noise_suppress_filter_v2",
+          "settings": {
+            "method": "rnnoise"
+          },
+          "enabled": true
+        },
+        {
+          "name": "Streamer Limiter (-1.5dB)",
+          "id": "limiter_filter",
+          "settings": {
+            "threshold": -1.5,
+            "release_time": 60
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Multi-Chat Dock Overlay",
+      "id": "browser_source",
+      "settings": {
+        "url": "http://localhost:8999",
+        "width": 450,
+        "height": 800,
+        "fps": 60,
+        "restart_when_active": true,
+        "shutdown": false
+      },
+      "mixers": 0,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false
+    },
+    {
+      "name": "GAMEPLAY ULTRA (Active)",
+      "id": "scene",
+      "settings": {
+        "id_counter": 4,
+        "custom_size": false,
+        "items": [
+          {
+            "name": "DirectX / Vulkan Game Capture",
+            "source_uuid": "",
+            "visible": true,
+            "locked": true,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds_type": 0
+          },
+          {
+            "name": "Multi-Chat Dock Overlay",
+            "source_uuid": "",
+            "visible": false,
+            "locked": false,
+            "pos": {
+              "x": 20.0,
+              "y": 20.0
+            },
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "mixers": 0,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false
+    },
+    {
+      "name": "BE RIGHT BACK / INTERMISSION",
+      "id": "scene",
+      "settings": {
+        "id_counter": 1,
+        "custom_size": false,
+        "items": []
+      },
+      "mixers": 0,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false
+    },
+    {
+      "name": "STREAM STARTING SOON",
+      "id": "scene",
+      "settings": {
+        "id_counter": 1,
+        "custom_size": false,
+        "items": []
+      },
+      "mixers": 0,
+      "sync": 0,
+      "flags": 0,
+      "volume": 1.0,
+      "balance": 0.5,
+      "enabled": true,
+      "muted": false
+    }
+  ],
+  "scene_order": [
+    {
+      "name": "GAMEPLAY ULTRA (Active)"
+    },
+    {
+      "name": "BE RIGHT BACK / INTERMISSION"
+    },
+    {
+      "name": "STREAM STARTING SOON"
+    }
+  ]
+}

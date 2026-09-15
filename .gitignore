@@ -1,0 +1,26 @@
+# BrodCatsSuite0 - Security & Build Ignore
+# CRITICAL: Never commit personal stream keys
+config/destinations.json
+config/mediamtx.yml
+config/obs_profiles/*/obs-multi-rtmp.json
+
+# Binaries & Logs
+*.log
+bin/*.log
+bin/*.tmp
+bin/mtx.log
+bin/mtx_err.log
+bin/debug.log
+
+# Build artifacts
+*.obj
+*.pdb
+
+# OBS AppData runtime
+.sentinel/
+crashes/
+
+*.key
+*.crt
+
+bin/mediamtx.exe

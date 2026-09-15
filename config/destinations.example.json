@@ -1,0 +1,58 @@
+{
+  "destinations": {
+    "twitch": {
+      "id": "twitch",
+      "name": "Twitch",
+      "color": "#9146FF",
+      "enabled": true,
+      "server": "rtmp://live.twitch.tv/app",
+      "stream_key": "",
+      "max_bitrate_kbps": 8000,
+      "recommended_fps": 60,
+      "recommended_resolution": "1920x1080",
+      "notes": "Optimal at 8000 Kbps NVENC H.264 CBR, 2s keyframe, low latency."
+    },
+    "youtube": {
+      "id": "youtube",
+      "name": "YouTube Live",
+      "color": "#FF0000",
+      "enabled": true,
+      "server": "rtmp://a.rtmp.youtube.com/live2",
+      "stream_key": "",
+      "max_bitrate_kbps": 18000,
+      "recommended_fps": 60,
+      "recommended_resolution": "1920x1080 or 2560x1440",
+      "notes": "Supports 1440p AV1 or H.264 CBR up to 18000+ Kbps with auto-transcoding."
+    },
+    "kick": {
+      "id": "kick",
+      "name": "Kick",
+      "color": "#53FC18",
+      "enabled": true,
+      "server": "rtmp://fa723fc1b171.global-contribute.live-video.net/api/v2/hls",
+      "stream_key": "",
+      "max_bitrate_kbps": 8000,
+      "recommended_fps": 60,
+      "recommended_resolution": "1920x1080",
+      "notes": "Optimal at 8000 Kbps NVENC H.264 CBR, 2s keyframe."
+    },
+    "tiktok": {
+      "id": "tiktok",
+      "name": "TikTok Live",
+      "color": "#FE2C55",
+      "enabled": false,
+      "server": "rtmp://live-push.tiktok.com/live",
+      "stream_key": "",
+      "max_bitrate_kbps": 6000,
+      "recommended_fps": 60,
+      "recommended_resolution": "1080x1920 or 1920x1080",
+      "notes": "Supports horizontal 1080p60 or vertical 1080x1920 dual canvas."
+    }
+  },
+  "master_relay": {
+    "listen_host": "127.0.0.1",
+    "rtmp_port": 1935,
+    "stream_path": "live/master",
+    "full_ingest_url": "rtmp://127.0.0.1:1935/live/master"
+  }
+}
