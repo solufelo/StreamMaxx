@@ -111,8 +111,8 @@ namespace StreamMaxx {
 
             ContextMenu cm = new ContextMenu();
             cm.MenuItems.Add("Show StreamMaxx Hub", delegate { Show(); WindowState = FormWindowState.Normal; BringToFront(); });
-            cm.MenuItems.Add("? 1-Click Go Live", delegate { StartEverything(); });
-            cm.MenuItems.Add("?? Stop Relay", delegate { StopRelay(); });
+            cm.MenuItems.Add("1-Click Go Live", delegate { StartEverything(); });
+            cm.MenuItems.Add("Stop Relay", delegate { StopRelay(); });
             cm.MenuItems.Add("-");
             cm.MenuItems.Add("Exit", delegate { StopRelay(); trayIcon.Visible = false; Application.Exit(); });
             trayIcon.ContextMenu = cm;
@@ -122,7 +122,7 @@ namespace StreamMaxx {
             titleBar.MouseDown += TitleBar_MouseDown;
 
             Label lblTitle = new Label {
-                Text = "? STREAMMAXX  //  HARDWARE OPTIMAXX BROADCAST ENGINE",
+                Text = "STREAMMAXX  //  HARDWARE OPTIMAXX BROADCAST ENGINE",
                 Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(0, 240, 255),
                 Location = new Point(16, 9),
@@ -132,7 +132,7 @@ namespace StreamMaxx {
             titleBar.Controls.Add(lblTitle);
 
             Button btnClose = new Button {
-                Text = "?", Font = new Font("Segoe UI", 9f, FontStyle.Bold),
+                Text = "X", Font = new Font("Segoe UI", 9f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(160, 170, 185), BackColor = Color.Transparent,
                 FlatStyle = FlatStyle.Flat, Size = new Size(36, 38),
                 Location = new Point(880 - 36, 0), Cursor = Cursors.Hand
@@ -142,7 +142,7 @@ namespace StreamMaxx {
             titleBar.Controls.Add(btnClose);
 
             Button btnMin = new Button {
-                Text = "?", Font = new Font("Segoe UI", 9f, FontStyle.Bold),
+                Text = "-", Font = new Font("Segoe UI", 9f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(160, 170, 185), BackColor = Color.Transparent,
                 FlatStyle = FlatStyle.Flat, Size = new Size(36, 38),
                 Location = new Point(880 - 72, 0), Cursor = Cursors.Hand
@@ -171,7 +171,7 @@ namespace StreamMaxx {
             heroPnl.Controls.Add(lblTelemetry);
 
             btnMasterLaunch = new ModernButton {
-                Text = "? 1-CLICK OPTIMAXX & GO LIVE", Location = new Point(48, 70), Size = new Size(310, 38),
+                Text = ">> 1-CLICK OPTIMAXX & GO LIVE", Location = new Point(48, 70), Size = new Size(310, 38),
                 NormalColor = Color.FromArgb(0, 200, 100), HoverColor = Color.FromArgb(0, 240, 130),
                 BorderColor = Color.FromArgb(0, 255, 120), ForeColor = Color.FromArgb(5, 25, 15),
                 Font = new Font("Segoe UI", 11f, FontStyle.Bold)
@@ -180,7 +180,7 @@ namespace StreamMaxx {
             heroPnl.Controls.Add(btnMasterLaunch);
 
             ModernButton btnStopRelay = new ModernButton {
-                Text = "?? STOP RELAY", Location = new Point(370, 70), Size = new Size(150, 38),
+                Text = "[X] STOP RELAY", Location = new Point(370, 70), Size = new Size(150, 38),
                 NormalColor = Color.FromArgb(35, 20, 25), HoverColor = Color.FromArgb(60, 25, 35),
                 BorderColor = Color.FromArgb(255, 60, 80), ForeColor = Color.FromArgb(255, 120, 140)
             };
@@ -188,7 +188,7 @@ namespace StreamMaxx {
             heroPnl.Controls.Add(btnStopRelay);
 
             ModernButton btnLaunchObs = new ModernButton {
-                Text = "?? LAUNCH OBS", Location = new Point(530, 70), Size = new Size(150, 38),
+                Text = ">> LAUNCH OBS", Location = new Point(530, 70), Size = new Size(150, 38),
                 NormalColor = Color.FromArgb(20, 32, 50), HoverColor = Color.FromArgb(30, 48, 75),
                 BorderColor = Color.FromArgb(0, 200, 255), ForeColor = Color.FromArgb(0, 240, 255)
             };
@@ -196,7 +196,7 @@ namespace StreamMaxx {
             heroPnl.Controls.Add(btnLaunchObs);
 
             ModernButton btnOpenDash = new ModernButton {
-                Text = "?? WEB HUD", Location = new Point(690, 70), Size = new Size(140, 38),
+                Text = "WEB HUD", Location = new Point(690, 70), Size = new Size(140, 38),
                 NormalColor = Color.FromArgb(25, 30, 42), HoverColor = Color.FromArgb(40, 48, 68),
                 BorderColor = Color.FromArgb(120, 135, 160), ForeColor = Color.FromArgb(200, 215, 235)
             };
@@ -218,7 +218,7 @@ namespace StreamMaxx {
             CreatePlatformCard(pnlGrid, 310, "TikTok Live (RTMP Live Producer)", Color.FromArgb(0, 240, 255), out chkTikTok, out txtTikTokSrv, out txtTikTokKey);
 
             ModernButton btnSave = new ModernButton {
-                Text = "?? SAVE & SYNC DESTINATIONS", Location = new Point(16, 385), Size = new Size(240, 34),
+                Text = "SAVE & SYNC DESTINATIONS", Location = new Point(16, 385), Size = new Size(240, 34),
                 NormalColor = Color.FromArgb(0, 120, 215), HoverColor = Color.FromArgb(0, 150, 255),
                 BorderColor = Color.FromArgb(50, 180, 255), ForeColor = Color.White
             };
@@ -236,7 +236,7 @@ namespace StreamMaxx {
             pnlGrid.Controls.Add(lblIngest);
 
             ModernButton btnCopy = new ModernButton {
-                Text = "?? COPY", Location = new Point(740, 385), Size = new Size(92, 34),
+                Text = "COPY", Location = new Point(740, 385), Size = new Size(92, 34),
                 NormalColor = Color.FromArgb(25, 32, 48), HoverColor = Color.FromArgb(35, 45, 68),
                 BorderColor = Color.FromArgb(80, 100, 130), ForeColor = Color.FromArgb(200, 220, 240)
             };
@@ -456,7 +456,7 @@ namespace StreamMaxx {
             StartRelay();
             LaunchObsOnly();
 
-            lblStatus.Text = "? BROADCASTING ACTIVE // ALL PLATFORMS MULTIPLEXED";
+            lblStatus.Text = "BROADCASTING ACTIVE // ALL PLATFORMS MULTIPLEXED";
             pnlStatusGlow.BackColor = Color.FromArgb(0, 255, 102);
 
             trayIcon.ShowBalloonTip(3000, "StreamMaxx Live", "Zero-Copy Relay & Optimaxxed OBS are running. Game cores protected!", ToolTipIcon.Info);
@@ -554,7 +554,7 @@ namespace StreamMaxx {
             bool isRelayRunning = (relayProcess != null && !relayProcess.HasExited) || Process.GetProcessesByName("mediamtx").Length > 0;
 
             if (isObsRunning && isRelayRunning) {
-                lblStatus.Text = "? BROADCASTING ACTIVE // ALL PLATFORMS MULTIPLEXED";
+                lblStatus.Text = "BROADCASTING ACTIVE // ALL PLATFORMS MULTIPLEXED";
                 pnlStatusGlow.BackColor = Color.FromArgb(0, 255, 102);
             } else if (isRelayRunning) {
                 lblStatus.Text = "RELAY RUNNING (1935) // AWAITING OBS STREAM";
@@ -579,7 +579,7 @@ namespace StreamMaxx {
                         string[] parts = output.Split(',');
                         if (parts.Length >= 4) {
                             lblTelemetry.Text = string.Format(
-                                "Hardware: Ryzen 5800X [Cores 6-7 / 0xF000] | RTX 4060 Ti [NVENC: {0}% | {1}?C | VRAM: {2}MB] | QoS: DSCP 46",
+                                "Hardware: Ryzen 5800X [Cores 6-7 / 0xF000] | RTX 4060 Ti [NVENC: {0}% | {1}C | VRAM: {2}MB] | QoS: DSCP 46",
                                 parts[1].Trim(), parts[2].Trim(), parts[3].Trim()
                             );
                         }
